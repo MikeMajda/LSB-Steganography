@@ -21,30 +21,17 @@ def hex2bit(hexcode):
 	return  bitstring.bin
 	
 def bit2hex(bitstring):
-	if(bitstring[:4] == '0000'):
-		if(bitstring[:8] == '00000000'):
-			if(bitstring[:12] == '000000000000'):
-				if(bitstring[:16] == '0000000000000000'):
-					if(bitstring[:20] == '00000000000000000000'):
-						if(bitstring == '000000000000000000000000'):
-							return '#000000'
-						hexcode = hex(int(bitstring, 2))
-						hexcode = '#00000' + hexcode[2:]
-						return hexcode
-					hexcode = hex(int(bitstring, 2))
-					hexcode = '#0000' + hexcode[2:]
-					return hexcode
-				hexcode = hex(int(bitstring, 2))
-				hexcode = '#000' + hexcode[2:]
-				return hexcode
-			hexcode = hex(int(bitstring, 2))
-			hexcode = '#00' + hexcode[2:]
-			return hexcode
-		
-		hexcode = hex(int(bitstring, 2))
-		hexcode = '#0' + hexcode[2:]
-		return hexcode
-	if bitstring == '':
+        for i in range(4, 20, 4):
+            bits = '0'*i
+
+            if(bitstring[:i] == bits):
+                return '#000000'
+            elif(bitstring[:i] == bits):
+                hexcode = hex(int(bitstring, 2))
+                hexcode = '#' + '0'*(i%4) + hexcode[2:]
+                return hexcode
+
+        if bitstring == '':
 		return None
 	hexcode = hex(int(bitstring, 2))
 	hexcode = hexcode.replace('0x' , '#')
