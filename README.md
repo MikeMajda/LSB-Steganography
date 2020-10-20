@@ -1,4 +1,4 @@
-# LSB-Steganorgrpahy
+# LSB-Steganography
 Hide messages as well as images within other message and images and be able to retrieve them.
 
 In order to run the program make sure you have any Python 3.XX installed.
